@@ -1,0 +1,12 @@
+body{
+  background-color: antiquewhite;
+}
+
+.header{
+  text-align: center;
+}
+
+.form{
+  padding-left: 100px;
+  padding-right: 100px;
+}
