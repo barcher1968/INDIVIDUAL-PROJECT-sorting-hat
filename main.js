@@ -59,7 +59,8 @@ const renderToDom = (divId, htmlToRender) => {
 for (let i=0; i < wizards.length; i++){
   const app = document.querySelector("#app")
   app.innerHTML +=
-  `<div class="card-header">
+  `<div class = "card">
+  <div class="card-header">
     ${wizards[i].name}
   </div>
   <div class="card-body">
@@ -67,6 +68,7 @@ for (let i=0; i < wizards.length; i++){
   </div>
   <div class="card-footer">
     <button class="btn btn-danger" id="delete--${wizards.id}">Expel</button>
+  </div>
   </div>`
 }
 
@@ -76,7 +78,7 @@ startButton.addEventListener('click', () => {
   console.log("button was clicked");
   //reveals the form element after the start sorting button is clicked
   const form = document.getElementById ('form');
-    if (form.style.display === 'none'){
+    if (form.style.display === 'block'){
       form.style.display = 'block';
     } else {
       form.style.display = 'none'
