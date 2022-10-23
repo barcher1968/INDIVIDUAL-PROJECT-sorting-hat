@@ -73,21 +73,30 @@ for (let i=0; i < wizards.length; i++){
 }
 
 //Start sorting button needs to reveal the form.
-const startButton = document.querySelector("#startButton");
-startButton.addEventListener('click', () => {
-  console.log("button was clicked");
-  //reveals the form element after the start sorting button is clicked
-  const form = document.getElementById ('form');
-    if (form.style.display === 'block'){
-      form.style.display = 'block';
+
+//   //reveals the form element after the start sorting button is clicked
+  const startbtn = document.getElementById('startButton');
+
+  startbtn.addEventListener('click', () => {
+    const form = document.getElementById('form');
+    console.log("start button was clicked");
+
+    if (form.style.visibility === 'hidden') {
+      form.style.visibility = 'visible';
     } else {
-      form.style.display = 'none'
+      form.style.visibility = 'hidden';
     }
-});
+  });
+   // const form = document.getElementById ('form');
+  //   if (form.style.display === 'block'){
+  //     form.style.display = 'block';
+  //   } else {
+  //     form.style.display = 'none'
+  //   }
 
 const submitButton = document.querySelector("#submitButton");
 submitButton.addEventListener('click', () => {
-  console.log("button was clicked");
+  console.log("submit button was clicked");
 });
 
 const form = document.querySelector('form');
@@ -106,6 +115,8 @@ const newWizard =  (e) => {
     houses[Math.floor(Math.random() * houses.length)];
     return randomHouse; 
   }
+  // randomHouse();
+  // console.log(randomHouse);
 
   const newWizardObj = {
     id: wizards.length +1, 
