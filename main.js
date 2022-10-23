@@ -128,3 +128,4 @@ const newWizard =  (e) => {
   console.log("new wizard was created");
   form.reset();
 }
+form.addEventListener('submit', newWizard);
