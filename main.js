@@ -8,46 +8,37 @@ const wizards = [
   },
   {
     id: 2,
-    name: "Peter Pettigrew",
-    house: "Gryffindor"
-  },
-  {
-    id: 3,
-    name: "Hermione Granger",
-    house: "Gryffindor"
-  },
-  {
-    id: 4,
-    name: "Ron Weasley",
-    house: "Gryffindor"
-  },
-  {
-    id: 5,
     name: "Draco Malfoy",
     house: "Slytherin"
   },
   {
-    id: 6,
+    id: 3,
     name: "Luna Lovegood",
     house: "Ravenclaw"
   },
   {
-    id: 7,
+    id: 4,
     name: "Cedric Diggory",
     house: "Hufflepuff"
-  },
+  }
+];
+
+const exWizards = [
   {
-    id: 8,
-    name: "Ernie Macmillan",
-    house: "Hufflepuff"
-  },
-  {
-    id: 9,
-    name: "Severus Snape",
-    house: "Slytherin"
+    id: 1,
+    name: "Tyler Snape",
+    house: "Death Eater"
   }
 
 ];
+
+const houses = [
+  "Gryffindor", 
+  "Slytherin", 
+  "HufflePuff", 
+  "Ravenclaw"
+];
+
 
 // Render to DOM utility function
 const renderToDom = (divId, htmlToRender) => {
@@ -56,9 +47,10 @@ const renderToDom = (divId, htmlToRender) => {
 };
 
 //put the initial cards on the DOM
-const cardsOnDom = (wizards) => {
+
+const cardsOnDom = (array) => {
   let domString = "";
-  for (const member of wizards) {
+  for (const member of array) {
     domString += `<div class = "card">
       <div class="card-header">
          ${member.name}
@@ -74,7 +66,7 @@ const cardsOnDom = (wizards) => {
   renderToDom("#app", domString);
 }
 cardsOnDom(wizards);
-//Start sorting button needs to reveal the form.
+//cardsOnDom(exWizards);
 
 //reveals the form element after the start sorting button is clicked
   const startbtn = document.getElementById('startButton');
@@ -102,33 +94,30 @@ submitButton.addEventListener('click', () => {
 const newWizard =  (e) => {
   e.preventDefault();
 
-  const houses = [
-    "Gryffindor", 
-    "Slytherin", 
-    "HufflePuff", 
-    "Ravenclaw"
-  ];
-
-  // ***This is the function to randomize the houses
-  // const randomHouse = (houses) => {
-  //   houses[Math.floor(Math.random() * houses.length)];
-  //   return randomHouse; 
-  // }
-  // randomHouse();
-  // console.log(randomHouse);
-
+  // const houses = [
+  //   "Gryffindor", 
+  //   "Slytherin", 
+  //   "HufflePuff", 
+  //   "Ravenclaw"
+  // ];
   const newWizardObj = {
     id: wizards.length +1, 
     name: document.querySelector("#name").value,
     //***Put this back in after I get things working.*** 
     house: houses[Math.floor(Math.random() * houses.length)]
   }
-  return newWizard;
-  console.log(newWizard)
-  console.log(newWizardObj);
+  //return newWizard;
   wizards.push(newWizardObj);
   cardsOnDom(wizards);
-  console.log("new wizard was created");
-  //form.reset();
+  form.reset();
 }
+console.log("new wizard was created");
+
 form.addEventListener("form-submit", newWizard);
+
+const startApp = () => {
+  cardsOnDom(wizards);
+//  events(); // ALWAYS LAST
+}
+
+startApp();
