@@ -7,10 +7,18 @@ body{
 }
 
 .form{
-  visibility: hidden;
+  
   padding-left: 100px;
   padding-right: 100px;
   margin-bottom: 50px;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
 }
 
 .card{
