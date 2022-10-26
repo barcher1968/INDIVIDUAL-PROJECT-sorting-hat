@@ -75,25 +75,22 @@ cardsOnDom(wizards);
     const form = document.getElementById('form');
     console.log("start button was clicked");
 
-    if (form.style.visibility === 'hidden') {
-      form.style.visibility = 'visible';
-    } else {
-      form.style.visibility = 'hidden';
-    }
+    form.classList.toggle("hidden") 
   });
    
 const form = document.querySelector('form');
 
 const submitButton = document.querySelector("#form-submit");
-submitButton.addEventListener('click', () => {
+submitButton.addEventListener('click', (e) => {
   console.log("submit button was clicked");
+  newWizard(e);
 });
 
 //const form = document.querySelector('form');
 
 const newWizard =  (e) => {
   e.preventDefault();
-
+console.log(e);
   // const houses = [
   //   "Gryffindor", 
   //   "Slytherin", 
