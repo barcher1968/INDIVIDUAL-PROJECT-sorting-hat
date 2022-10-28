@@ -48,7 +48,7 @@ const renderToDom = (divId, htmlToRender) => {
 
 //put the initial cards on the DOM
 
-const cardsOnDom = (array) => {
+const wizardsCardsOnDom = (array) => {
   let domString = "";
   for (const member of array) {
     domString += `<div class = "card">
@@ -59,13 +59,32 @@ const cardsOnDom = (array) => {
          ${member.house}
        </div>
        <div class="card-footer">
-         <button class="btn btn-danger" id="delete--${member.id}">Expel</button>
+         <button class="btn btn-danger" id="expel--${member.id}">Expel</button>
        </div>
        </div>`;
   }
-  renderToDom("#app", domString);
+  renderToDom("#wizards", domString);
 }
-cardsOnDom(wizards);
+//wizardsCardsOnDom(wizards);
+
+const exWizardsCardsOnDom = (array) => {
+  let domString = "";
+  for (const member of array) {
+    domString += `<div class = "card">
+      <div class="card-header">
+         ${member.name}
+       </div>
+       <div class="card-body">
+         ${member.house}
+       </div>
+       <div class="card-footer">
+         
+       </div>
+       </div>`;
+  }
+  renderToDom("#exWizards", domString);
+}
+//exwizardsCardsOnDom(exwizards);
 //cardsOnDom(exWizards);
 
 //reveals the form element after the start sorting button is clicked
@@ -105,16 +124,39 @@ console.log(e);
   }
   //return newWizard;
   wizards.push(newWizardObj);
-  cardsOnDom(wizards);
+  wizardsCardsOnDom(wizards);
   form.reset();
 }
-console.log("new wizard was created");
+//console.log("new wizard was created");
 
 form.addEventListener("form-submit", newWizard);
 
+document.querySelector("#cards").addEventListener('click', (e) => {
+  //check e.target.id includes "expel"
+  if (e.target.id.includes("expel")) {
+    const [, id] = e.target.id.split("--");
+    console.log(e.target);
+    console.log(e.target.id);
+    console.log(id);
+
+    //**add logic to push newly expelled wizard to exwizards array
+    
+    // add logic to remove from array
+    const index = wizards.findIndex(e => e.id === Number(id));
+    //wizards.push(exWizards);
+    //console.log('exwizard created');
+    const newexWizard = wizards.splice(index, 1);
+    exWizards.push(newexWizard[0]);
+    // Repaint the DOM wiconst app = document.querySelector("#app");th the updated array
+    wizardsCardsOnDom(wizards);
+    exWizardsCardsOnDom(exWizards);
+  }
+});
+
 const startApp = () => {
-  cardsOnDom(wizards);
-//  events(); // ALWAYS LAST
+  wizardsCardsOnDom(wizards);
+  exWizardsCardsOnDom(exWizards);
+  //events(); // ALWAYS LAST
 }
 
 startApp();

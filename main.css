@@ -21,6 +21,19 @@ body{
   visibility: visible;
 }
 
+#hogwarts {
+  width: 50%;
+  background-color: blueviolet;
+  padding: 20px;
+  
+}
+
+#voldemort {
+  width: 50%;
+  background-color: greenyellow;
+  padding: 20px;
+}
+
 .card{
   border: solid 2px black;
   margin-bottom: 10px;
