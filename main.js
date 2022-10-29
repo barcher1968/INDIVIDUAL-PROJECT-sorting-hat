@@ -137,12 +137,55 @@ document.querySelector("#cards").addEventListener('click', (e) => {
 //this is the splice function that returns a new array I called new ex wizard
     const newexWizard = wizards.splice(index, 1);
     //this is where I push the newexwizard index 0 created by using the .splice method to the exwizard array
-    exWizards.push(newexWizard[0]);
+     newexWizard[0].house = "Death Eater";
+     exWizards.push(newexWizard[0]);
+   
     // this puts the cards back on the dom
     wizardsCardsOnDom(wizards);
     exWizardsCardsOnDom(exWizards);
   }
 });
+
+//this is the filter function
+const filter = (wizards, requestedType) => {
+  const typeArray = [];
+  for (const wizard of wizards) {
+    if (wizard.house === requestedType) {
+      typeArray.push(wizard);
+    } 
+  }
+  return typeArray;
+}
+
+//query selector and event listeners for the filter buttons
+const gryf = document.querySelector("#gryf")
+gryf.addEventListener('click', () => {
+  const house = filter(wizards, "Gryffindor");
+  wizardsCardsOnDom(house);
+console.log("button was clicked");
+});
+
+const huff = document.querySelector("#huff")
+huff.addEventListener('click', () => {
+  const house = filter(wizards, "Hufflepuff");
+  wizardsCardsOnDom(house);
+console.log("button was clicked");
+});
+
+const rav = document.querySelector("#rav")
+rav.addEventListener('click', () => {
+  const house = filter(wizards, "Ravenclaw");
+  wizardsCardsOnDom(house);
+console.log("button was clicked");
+});
+
+const sly = document.querySelector("#sly")
+sly.addEventListener('click', () => {
+  const house = filter(wizards, "Slytherin");
+  wizardsCardsOnDom(house);
+console.log("button was clicked");
+});
+
 //this is the start app function that calls the cards on dom functions at the top
 const startApp = () => {
   wizardsCardsOnDom(wizards);
